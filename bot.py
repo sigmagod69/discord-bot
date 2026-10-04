@@ -118,7 +118,7 @@ async def on_message(message):
 
         if count < PING_LIMIT:
             await message.channel.send(
-                f"{message.author.mention}, you have pinged @everyone **{count}** time(s) now. "
+                f"{message.author.mention}, you have pinged everyone **{count}** time(s) now. "
                 f"You have {PING_LIMIT - count} more before your fate will be sealed."
             )
         else:
@@ -129,7 +129,7 @@ async def on_message(message):
 
             if role and role in member.roles:
                 try:
-                    await member.remove_roles(role, reason=f"Pinged @everyone {PING_LIMIT} times")
+                    await member.remove_roles(role, reason=f"Pinged everyone {PING_LIMIT} times")
                 except discord.Forbidden:
                     await message.channel.send(
                         "I don't have permission to remove that role. "
@@ -143,7 +143,7 @@ async def on_message(message):
             save_data(data)
 
             await message.channel.send(
-                f"{message.author.mention}, you just hit your @everyone ping limit! "
+                f"{message.author.mention}, you just hit your everyone ping limit! "
                 f"Your fate shall be sealed! No more everyone pings! Don't worry, you can always do it again in the future. "
                 f"**{punish_end.strftime('%B %d at %I:%M %p')}**."
             )
